@@ -1,0 +1,9 @@
+packages:
+  - 'frontend'
+  - 'backend'
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - astro@7.3.1

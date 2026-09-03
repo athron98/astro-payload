@@ -1,0 +1,33 @@
+---
+import "@/styles/global.css";
+import { payload } from "@/commons/Payload.astro";
+import { type User } from "backend";
+
+const { locale: routeParam, canonicalUrl } = Astro.params;
+const currentLocale =
+	routeParam ||
+	Astro.currentLocale ||
+	(Astro.url.pathname.startsWith("/id") ? "id" : "en");
+const targetCanonical =
+	canonicalUrl ||
+	new URL(Astro.url.pathname, Astro.site || "http://site.lvh.me").href;
+
+const users = await payload.find({
+	collection: "users",
+});
+---
+
+<html lang={currentLocale}>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+		<link rel="canonical" href={targetCanonical} />
+	</head>
+	<body>
+		<h1>Astro</h1>
+	</body>
+</html>

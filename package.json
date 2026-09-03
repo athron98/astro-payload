@@ -1,0 +1,31 @@
+{
+  "name": "astro-payload-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel dev",
+    "build": "pnpm -r run build",
+    "be": "pnpm --filter backend dev",
+    "fe": "pnpm --filter frontend dev",
+    "sync": "pnpm --filter frontend astro sync",
+    "fresh": "rm -Rf pnpm-lock.yaml node_modules backend/node_modules backend/.next frontend/.astro frontend/dist frontend/.wrangler frontend/node_modules && pnpm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "athron98",
+  "license": "ISC",
+  "dependencies": {
+    "backend": "workspace:*",
+    "frontend": "workspace:*",
+    "sharp": "0.34.2"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.22.0",
+      "onFail": "download"
+    }
+  },
+  "type": "module"
+}
